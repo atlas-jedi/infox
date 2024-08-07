@@ -18,3 +18,19 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+
+config :infox, Infox.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "root",
+  hostname: "localhost",
+  database: "infox_eventstore_prod",
+  pool_size: 10
+
+config :infox, Infox.Repo,
+  migration_timestamps: [type: :utc_datetime_usec],
+  username: "postgres",
+  password: "root",
+  hostname: "localhost",
+  database: "infox_readstore_prod",
+  pool_size: 10

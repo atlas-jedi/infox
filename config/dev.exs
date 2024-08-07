@@ -1,11 +1,20 @@
 import Config
 
+# Configure the event store database
+config :infox, Infox.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "root",
+  hostname: "localhost",
+  database: "infox_eventstore_dev",
+  pool_size: 10
+
 # Configure your database
 config :infox, Infox.Repo,
   username: "postgres",
   password: "root",
   hostname: "localhost",
-  database: "infox_dev",
+  database: "infox_readstore_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

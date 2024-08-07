@@ -1,15 +1,20 @@
 import Config
 
+# Configure the event store database
+config :infox, Infox.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "root",
+  hostname: "localhost",
+  database: "infox_eventstore_test",
+  pool_size: 10
+
 # Configure your database
-#
-# The MIX_TEST_PARTITION environment variable can be used
-# to provide built-in test partitioning in CI environment.
-# Run `mix help test` for more information.
 config :infox, Infox.Repo,
   username: "postgres",
   password: "root",
   hostname: "localhost",
-  database: "infox_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "infox_readstore_test",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
