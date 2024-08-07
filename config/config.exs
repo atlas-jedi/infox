@@ -4,12 +4,21 @@
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
 
-# General application configuration
 import Config
 
+# General application configuration
 config :infox,
   ecto_repos: [Infox.Repo],
+  event_stores: [Infox.EventStore],
   generators: [timestamp_type: :utc_datetime]
+
+config :infox, Infox.App,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: Infox.EventStore
+  ],
+  pub_sub: :local,
+  registry: :local
 
 # Configures the endpoint
 config :infox, InfoxWeb.Endpoint,
@@ -60,6 +69,12 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :commanded_ecto_projections,
+  repo: Infox.Repo
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

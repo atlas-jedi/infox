@@ -20,7 +20,7 @@ defmodule Infox.MixProject do
   def application do
     [
       mod: {Infox.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :eventstore]
     ]
   end
 
@@ -63,7 +63,9 @@ defmodule Infox.MixProject do
       {:ex_machina, "~> 2.8.0", only: :test},
       {:domo, "~> 1.5"},
       {:bcrypt_elixir, "~> 3.0"},
-      {:elixir_uuid, "~> 1.2"}
+      {:elixir_uuid, "~> 1.2"},
+      {:commanded_eventstore_adapter, "~> 1.4"},
+      {:commanded_ecto_projections, "~> 1.4"}
     ]
   end
 
