@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :infox, Infox.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "root",
   hostname: "localhost",
   database: "infox_dev",
   stacktrace: true,

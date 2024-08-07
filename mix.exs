@@ -9,7 +9,8 @@ defmodule Infox.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      compilers: [:domo_compiler] ++ Mix.compilers()
     ]
   end
 
@@ -58,7 +59,11 @@ defmodule Infox.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:ex_machina, "~> 2.8.0", only: :test},
+      {:domo, "~> 1.5"},
+      {:bcrypt_elixir, "~> 3.0"},
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 
