@@ -23,6 +23,7 @@ defmodule Infox.DataCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      import Infox.Factory
       import Infox.DataCase
     end
   end
